@@ -1,0 +1,3 @@
+all sylls: ACDEFGHTWZ
+
+target sylls: ACDEFGH
