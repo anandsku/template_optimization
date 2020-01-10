@@ -41,17 +41,17 @@ All gap slices with amplitude higher than the threshold are admitted as distract
 Variables ‘pre’ and ‘post’ have the same number of elements as the number of templates. They represent the performance of averaged and optimized templates respectively. Their fields are:
  
 Field descriptions are given below:
-o	pc_targ_slices_missed and pc_ditractor_slices_hit – These are fractions representing false negative and false positive errors respectively. 
-o	threshold – This value is optimal threshold for the given template.
-o	template – This field can be safely ignored.  
-o	sigma – This field represents the standard deviation of the Gaussian used for smoothing the distance distributions. 
+- pc_targ_slices_missed and pc_ditractor_slices_hit – These are fractions representing false negative and false positive errors respectively. 
+- threshold – This value is optimal threshold for the given template.
+- template – This field can be safely ignored.  
+- sigma – This field represents the standard deviation of the Gaussian used for smoothing the distance distributions. 
 
 •	**Calculate syllable level improvement in targeting using the optimized templates against the test data** (calculate_optimization_performance_train_thrs.m, test only):  This function evaluates the performance of averaged and optimized templates in detecting syllables in the test data. It writes a file for each target syllable. For example: multichunk_results_A.mat. Since these files are the end point of syllable level analysis, we describe them briefly below.       
  The above file has a variable called multichunk_results. It has the following fields:
  
 The first dimension in pre and post is the number of templates, the second one is the range of detection criteria (# of consecutive slices) and the third one is the range of threshold levels (0% to 200% in 10% steps). The fields in pre and post are:
   
-‘consec_chunk’ refers to the detection criterion value and ‘threshold_incre’ refers to the threshold increment. ‘pc_distractors_hit_wrt_targets’ is the number of distractors hit as a percentage of the total number of targets. Threshold increments here are stated as the fractional added value. For example, 0% to 200% in 10% steps is stated as -1 to 1 in steps of 0.1. trg_jitter refers to the standard deviation of latency of detection relative to syllable onset.    
+‘consec_chunk’ refers to the detection criterion value and ‘threshold_incre’ refers to the threshold increment. ‘pc_distractors_hit_wrt_targets’ is the number of distractors hit as a percentage of the total number of targets. Threshold increments here are stated as the fractional added value. For example, 0% to 200% in 10% steps is stated as -1 to 1 in steps of 0.1. 'trg_jitter' refers to the standard deviation of latency of detection relative to syllable onset.    
 The fields pre_sorted and post_sorted contain all combinations of template slices, detection criteria, and thresholds  sorted in ascending order of the balanced error. These values can be directly used for finalizing the targeting parameters for an experiment.   
   
 
