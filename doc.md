@@ -18,7 +18,7 @@ For the procedure outlined below:
 
 The script ‘main.m’ can run the entire procedure for all syllables of a single bird. It runs several functions sequentially to achieve this. These actions/functions are described below in detail:
 
-•**Create simdata files** (create_simdata_file.m, both training and test): This function segments the audio files into 256-data-point-long slices and assigns the slices to syllables and gaps. It stores that information in .simdata files. This function should be run for both training and test data.   
+• **Create simdata files** (create_simdata_file.m, both training and test): This function segments the audio files into 256-data-point-long slices and assigns the slices to syllables and gaps. It stores that information in .simdata files. This function should be run for both training and test data.   
 
 • **Calculate amplitude threshold** (calculate_amplitude_threshold.m, training only): This function uses spectral amplitudes of all slices in the training data to calculate an optimal amplitude threshold. The optimization tries to minimize the misclassification of syllable-assigned and gap-assigned slices in reference to a given amplitude threshold. 
 All gap slices with amplitude higher than the threshold are admitted as distractors in the optimization process. This amplitude threshold is also applied as a criterion for slice matching, in addition to spectral distance, during the evaluation process. It stores the amplitude threshold value in a file called ‘amp_thr.mat’ in the training directory. This function should be run for training data only.      
@@ -30,13 +30,13 @@ All gap slices with amplitude higher than the threshold are admitted as distract
 •	**Align syllable associated chunks for each target syllable** (align_syll_assoc_chunks.m, training only): This function aligns syllable instances to their category specific modal slice length. This step will exclude instances of the syllable whose durations are more than 2 (tunable feature/parameter) standard deviations away from the mean duration for that category. This script simply replaces the previously generated syll_assoc_chunks file.
      This alignment allows us to take an average across all instances of a syllable, given that different instances have different number of slices.  
 
-•	Write template files from aligned chunks (make_templates.m, training only): This function makes and writes templates (and metadata) out of the aligned syllable associated chunks. For example: template_syll_A_seq_A_chunks_1_outof_9.dat and template_syll_A_seq_A_chunks_1_outof_9_metadata.mat.   
+•	**Write template files from aligned chunks** (make_templates.m, training only): This function makes and writes templates (and metadata) out of the aligned syllable associated chunks. For example: template_syll_A_seq_A_chunks_1_outof_9.dat and template_syll_A_seq_A_chunks_1_outof_9_metadata.mat.   
 
-•	Optimize templates (optimize_template.m, training only):  This function will optimize the templates and write a file containing the optimization results. For example:  optimization_grand_results_syll_A.mat. This step takes the longest as the gradient descent optimization is carried out here.   
+•	**Optimize templates** (optimize_template.m, training only):  This function will optimize the templates and write a file containing the optimization results. For example:  optimization_grand_results_syll_A.mat. This step takes the longest as the gradient descent optimization is carried out here.   
 
-•	Write optimized templates from optimization results (write_optimized_templates_from_optimization_results.m, training only):  This function will write the optimized template files and their metadata from the output/results files obtained during optimization. For example: template_syll_A_seq_A_chunks_1_outof_9_optimized.dat and template_syll_A_seq_A_chunks_1_outof_9_optimized_metadata.mat. 
+•	**Write optimized templates from optimization results** (write_optimized_templates_from_optimization_results.m, training only):  This function will write the optimized template files and their metadata from the output/results files obtained during optimization. For example: template_syll_A_seq_A_chunks_1_outof_9_optimized.dat and template_syll_A_seq_A_chunks_1_outof_9_optimized_metadata.mat. 
 
-•	Calculate slice-level improvement resulting from optimization (calculate_optimization_performance_training_set.m, training only): This function calculates the slice level performance. It will write the training_set_slice_performance_*.mat files for each target syllable. For example: training_set_slice_performance_A.mat. Since these files are the end point of slice level analysis, we describe them briefly below. The file has a variable called training_set_slice_performance. It has the following fields:    
+•	**Calculate slice-level improvement resulting from optimization** (calculate_optimization_performance_training_set.m, training only): This function calculates the slice level performance. It will write the training_set_slice_performance_*.mat files for each target syllable. For example: training_set_slice_performance_A.mat. Since these files are the end point of slice level analysis, we describe them briefly below. The file has a variable called training_set_slice_performance. It has the following fields:    
  
 Variables ‘pre’ and ‘post’ have the same number of elements as the number of templates. They represent the performance of averaged and optimized templates respectively. Their fields are:
  
@@ -46,7 +46,7 @@ o	threshold – This value is optimal threshold for the given template.
 o	template – This field can be safely ignored.  
 o	sigma – This field represents the standard deviation of the Gaussian used for smoothing the distance distributions. 
 
-•	Calculate syllable level improvement in targeting using the optimized templates against the test data (calculate_optimization_performance_train_thrs.m, test only):  This function evaluates the performance of averaged and optimized templates in detecting syllables in the test data. It writes a file for each target syllable. For example: multichunk_results_A.mat. Since these files are the end point of syllable level analysis, we describe them briefly below.       
+•	**Calculate syllable level improvement in targeting using the optimized templates against the test data** (calculate_optimization_performance_train_thrs.m, test only):  This function evaluates the performance of averaged and optimized templates in detecting syllables in the test data. It writes a file for each target syllable. For example: multichunk_results_A.mat. Since these files are the end point of syllable level analysis, we describe them briefly below.       
  The above file has a variable called multichunk_results. It has the following fields:
  
 The first dimension in pre and post is the number of templates, the second one is the range of detection criteria (# of consecutive slices) and the third one is the range of threshold levels (0% to 200% in 10% steps). The fields in pre and post are:
