@@ -1,14 +1,21 @@
-Template optimization and evaluation procedure
+                                    
+                                    **Template optimization and evaluation procedure**
 This document contains description of the procedure used to optimize and evaluate spectral templates. It is part of the supplementary material for the paper ‘Optimal spectral templates for triggered feedback experiments.’
-About Sample Data
+
+**About Sample Data**
+
 The description of sample data below aims to show how the input data to the procedure should be formatted. The sample data (…\analysis_data\340) contains 50 songs from one of the birds (bird 340) used in the paper. It has been divided into two directories: …\analysis_data\340\train_dir and …\analysis_data\340\test_dir. The ‘train_dir’ contains training data and the ‘test_dir’ contains the test data set. Both directories contain 25 audio files (.cbin), their corresponding metadata files (.rec and .cbin.not.mat), and a batch file (txt file with the list of audio files). The two batch files are called batch_train and batch_test. The .rec files contain information about the sampling frequency and other metadata. The .cbin.not.mat files contain syllable-gap segmentation and label information. The only variables from cbin.not.mat that are critical to the scripts below are onsets, offsets, and labels: ‘onsets’ and ‘offsets’ contain the syllable onsets and offsets in msec. The variable ‘labels’ contains a string of characters that denote syllable labels.  There is also a txt file (…\analysis_data\340\340_syll_list.txt) that lists the names of all the syllables for this bird along with the identity of the target syllables among those. Syllables which are not target syllables denote sounds or noises in the audio file that occur outside the context of the song.     
+
            This procedure works with wav files just as well. In case of wav files, .rec files are not needed as wav files contain the relevant metadata about sampling frequency. You do need to create files ending in .wav.not.mat for each wav file and containing variables labels, onsets, and offsets.   
-Procedure
+           
+**Procedure**
+
 For the procedure outlined below:
 •	Ensure that the directories …\analysis_code and …\analysis_code_util are at the top of your Matlab path. 
 •	Change your Matlab working directory to …\analysis_data\340. 
 •	While reading this procedure, it is best to have the relevant script open in the editor.
 •	It is advisable to read the methods section of the paper to better understand the procedure laid out here.
+
 The script ‘main.m’ can run the entire procedure for all syllables of a single bird. It runs several functions sequentially to achieve this. These actions/functions are described below in detail:
 •	Create simdata files (create_simdata_file.m, both training and test): This function segments the audio files into 256-data-point-long slices and assigns the slices to syllables and gaps. It stores that information in .simdata files. This function should be run for both training and test data.   
 
