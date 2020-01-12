@@ -37,7 +37,7 @@ All gap slices with amplitude higher than the threshold are admitted as distract
 •	**Write optimized templates from optimization results** (write_optimized_templates_from_optimization_results.m, training only):  This function will write the optimized template files and their metadata from the output/results files obtained during optimization. For example: template_syll_A_seq_A_chunks_1_outof_9_optimized.dat and template_syll_A_seq_A_chunks_1_outof_9_optimized_metadata.mat. 
 
 •	**Calculate slice-level improvement resulting from optimization** (calculate_optimization_performance_training_set.m, training only): This function calculates the slice level performance. It will write the training_set_slice_performance_*.mat files for each target syllable. For example: training_set_slice_performance_A.mat. Since these files are the end point of slice level analysis, we describe them briefly below. The file has a variable called training_set_slice_performance. It has the following fields:    
-/imgs/img1.png 
+../imgs/img1.png 
 Variables ‘pre’ and ‘post’ have the same number of elements as the number of templates. They represent the performance of averaged and optimized templates respectively. Their fields are:
  
 Field descriptions are given below:
