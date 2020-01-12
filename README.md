@@ -1,7 +1,7 @@
 # Template Optimization
 This repository contains the code and documentation pertaining to our method of template optimization for Triggered Feedback (TF) experiments in songbirds. The manuscript that contains this method has recently been submitted. This description will be updated after acceptance/preprint upload.  
 
-Description of repo top-level dirs/files:
+Description of repo. top-level dirs/files:
 - code: Contains functions written for implementing the method
 - utils: Utility functions that are used by the functions contained in ../code
 - sample_data: Contains sample data on which the functions in ../code can be run/tested on
