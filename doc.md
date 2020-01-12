@@ -11,10 +11,10 @@ This procedure works with wav files just as well. In case of wav files, .rec fil
 ## Procedure
 
 For the procedure outlined below:
-•	Ensure that the directories …\analysis_code and …\analysis_code_util are at the top of your Matlab path. 
-•	Change your Matlab working directory to …\analysis_data\340. 
-•	While reading this procedure, it is best to have the relevant script open in the editor.
-•	It is advisable to read the methods section of the paper to better understand the procedure laid out here.
+- Ensure that the directories …\analysis_code and …\analysis_code_util are at the top of your Matlab path. 
+- Change your Matlab working directory to …\analysis_data\340. 
+-	While reading this procedure, it is best to have the relevant script open in the editor.
+-	It is advisable to read the methods section of the paper to better understand the procedure laid out here.
 
 The script ‘main.m’ can run the entire procedure for all syllables of a single bird. It runs several functions sequentially to achieve this. These actions/functions are described below in detail:
 
@@ -36,10 +36,12 @@ All gap slices with amplitude higher than the threshold are admitted as distract
 
 •	**Write optimized templates from optimization results** (write_optimized_templates_from_optimization_results.m, training only):  This function will write the optimized template files and their metadata from the output/results files obtained during optimization. For example: template_syll_A_seq_A_chunks_1_outof_9_optimized.dat and template_syll_A_seq_A_chunks_1_outof_9_optimized_metadata.mat. 
 
-•	**Calculate slice-level improvement resulting from optimization** (calculate_optimization_performance_training_set.m, training only): This function calculates the slice level performance. It will write the training_set_slice_performance_*.mat files for each target syllable. For example: training_set_slice_performance_A.mat. Since these files are the end point of slice level analysis, we describe them briefly below. The file has a variable called training_set_slice_performance. It has the following fields:    
+•	**Calculate slice-level improvement resulting from optimization** (calculate_optimization_performance_training_set.m, training only): This function calculates the slice level performance. It will write the training_set_slice_performance_*.mat files for each target syllable. For example: training_set_slice_performance_A.mat. Since these files are the end point of slice level analysis, we describe them briefly below. The file has a variable called training_set_slice_performance. It has the following fields: 
+
 ![img1](/imgs/img1.png) 
 
 Variables ‘pre’ and ‘post’ have the same number of elements as the number of templates. They represent the performance of averaged and optimized templates respectively. Their fields are:
+
  ![img2](/imgs/img2.png) 
  
 Field descriptions are given below:
@@ -50,13 +52,16 @@ Field descriptions are given below:
 
 •	**Calculate syllable level improvement in targeting using the optimized templates against the test data** (calculate_optimization_performance_train_thrs.m, test only):  This function evaluates the performance of averaged and optimized templates in detecting syllables in the test data. It writes a file for each target syllable. For example: multichunk_results_A.mat. Since these files are the end point of syllable level analysis, we describe them briefly below.       
  The above file has a variable called multichunk_results. It has the following fields:
+ 
  ![img3](/imgs/img3.png) 
  
 The first dimension in pre and post is the number of templates, the second one is the range of detection criteria (# of consecutive slices) and the third one is the range of threshold levels (0% to 200% in 10% steps). The fields in pre and post are:
+
 ![img4](/imgs/img4.png) 
   
 ‘consec_chunk’ refers to the detection criterion value and ‘threshold_incre’ refers to the threshold increment. ‘pc_distractors_hit_wrt_targets’ is the number of distractors hit as a percentage of the total number of targets. Threshold increments here are stated as the fractional added value. For example, 0% to 200% in 10% steps is stated as -1 to 1 in steps of 0.1. 'trg_jitter' refers to the standard deviation of latency of detection relative to syllable onset.    
 The fields pre_sorted and post_sorted contain all combinations of template slices, detection criteria, and thresholds  sorted in ascending order of the balanced error. These values can be directly used for finalizing the targeting parameters for an experiment.
+
 ![img5](/imgs/img5.png) 
   
 
