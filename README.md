@@ -8,4 +8,4 @@ Description of repo. top-level dirs/files:
 - doc.md - Document describing the content and data structures of the functions that implement the method
 - imgs: Contains images that are linked to in the documentation
 
-The complete data set for this paper can be found on the Harvard Dataverse doi:10.7910/DVN/62EHNM).
+The complete data set for this paper can be found on the Harvard Dataverse doi:10.7910/DVN/62EHNM.
