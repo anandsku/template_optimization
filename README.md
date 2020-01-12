@@ -4,5 +4,6 @@ This repository contains the code and documentation pertaining to our method of 
 Description of repo top-level dirs/files:
 - code: Contains functions written for implementing the method
 - utils: Utility functions that are used by the functions contained in ../code
-- sample_data: Contains sample data on which the functions in code can be run/tested on
+- sample_data: Contains sample data on which the functions in ../code can be run/tested on
 - doc.md - Document describing the content and data structures of the functions that implement the method
+- imgs: Contains images that are linked to in the documentation
