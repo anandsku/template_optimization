@@ -1,5 +1,6 @@
 # Template Optimization
-This repository contains the code and documentation pertaining to our method of template optimization for Triggered Feedback (TF) experiments in songbirds. The manuscript that contains this method has recently been submitted. This description will be updated after acceptance/preprint upload.  
+This repository contains the code and documentation pertaining to our method of template optimization for Triggered Feedback (TF) experiments in songbirds. The manuscript that contains this method has recently been submitted. Here is the link to the pre-print:
+https://www.biorxiv.org/content/10.1101/2020.01.20.912444v1
 
 Description of repo. top-level dirs/files:
 - code: Contains functions written for implementing the method
